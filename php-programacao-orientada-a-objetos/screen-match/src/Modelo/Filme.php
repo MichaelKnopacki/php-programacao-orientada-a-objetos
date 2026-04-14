@@ -1,37 +1,31 @@
 <?php
 
 class Filme {
-    private string $nome;
-    private int $anoLancamento;
-    private string $genero;
+    private string $nome = 'Nome padrão';
+    private int $anoLancamento = 2024;
+    private string $genero = 'ação';
     private array $notas = [];
 
-    public function avalia(float $nota): void {
+    public function avalia(float $nota): void
+    {
         $this->notas[] = $nota;
     }
 
-    public function nome(): string {
-        return $this->nome;
+    public function media(): float
+    {
+        $somaNotas = array_sum($this->notas);
+        $quantidadeNotas = count($this->notas);
+
+        return $somaNotas / $quantidadeNotas;
     }
 
-    public function defineNome(string $nome ): void {
-        $this->nome = $nome;
-    }
-
-    public function ano():int {
+    public function anoLancamento(): int
+    {
         return $this->anoLancamento;
     }
 
-    public function defineAno(int $anoLancamento):void {
+    public function defineAnoLancamento(int $anoLancamento): void
+    {
         $this->anoLancamento = $anoLancamento;
     }
-
-    public function genero():string{
-        return $this->genero;
-    }
-
-    public function defineGenero(string $genero):void{
-        $this->genero = $genero;
-    }
-
 }
